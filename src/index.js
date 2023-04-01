@@ -8,6 +8,8 @@ const refs = {
   galleryContainer: document.querySelector('.gallery'),
   loadMoreBtn: document.querySelector('.load-more'),
 };
+refs.loadMoreBtn.style.display = 'none'
+
 let isShown = 0;
 const newsApiService = new NewsApiService();
 
@@ -44,7 +46,7 @@ function onLoadMore() {
 }
 
 async function fetchGallery() {
-  refs.loadMoreBtn.classList.add('is-hidden');
+  refs.loadMoreBtn.style.display = 'inline-block'
 
   const r = await newsApiService.fetchGallery();
   const { hits, total } = r;
