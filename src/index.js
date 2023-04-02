@@ -50,7 +50,6 @@ function onSearch(event) {
 
   isShown = 0;
   fetchGallery();
-  onRenderGallery(hits);
 }
 
 function onLoadMore() {
