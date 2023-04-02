@@ -4,8 +4,7 @@ export default class NewsApiService {
   constructor() {
     this.searchQuery = '';
     this.page = 1;
-    // cделал 39 потому что так красивее, я знаю что в задании 40.
-    this.PER_PAGE = 39;
+    this.PER_PAGE = 40;
   }
   async fetchGallery() {
     const axiosOptions = {
@@ -42,9 +41,9 @@ export default class NewsApiService {
     this.page = 1;
   }
 
-  resetEndOfHits() {
-    this.endOfHits = false;
-  }
+  // resetEndOfHits() {
+  //   this.endOfHits = false;
+  // }
 
   get query() {
     return this.searchQuery;
