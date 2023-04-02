@@ -1,18 +1,31 @@
 import './sass/index.scss';
 import NewsApiService from './js/api-service';
-import { lightbox } from './js/ligthbox';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { lightbox } from './js/ligthbox';
+// создвл отдельный js файл для того что бы отделить библиотеки от основного кода 
+/*
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
+let lightbox = new SimpleLightbox('.photo-card a', {
+//   captions: true,
+//   captionsData: 'alt',
+//   captionDelay: 250,
+});
+*/
+
+
 
 const refs = {
   searchForm: document.querySelector('.search-form'),
   galleryContainer: document.querySelector('.gallery'),
   loadMoreBtn: document.querySelector('.load-more'),
 };
+// cкрываю кнопкц до момента когда получу ответ и сформирую галерею
 refs.loadMoreBtn.style.display = 'none'
 
 let isShown = 0;
 const newsApiService = new NewsApiService();
-
 refs.searchForm.addEventListener('submit', onSearch);
 refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
@@ -23,11 +36,11 @@ const options = {
 };
 const observer = new IntersectionObserver(onLoadMore, options);
 
-function onSearch(e) {
-  e.preventDefault();
+function onSearch(event) {
+  event.preventDefault();
 
   refs.galleryContainer.innerHTML = '';
-  newsApiService.query = e.currentTarget.elements.searchQuery.value.trim();
+  newsApiService.query = event.currentTarget.elements.searchQuery.value.trim();
   newsApiService.resetPage();
 
   if (newsApiService.query === '') {
