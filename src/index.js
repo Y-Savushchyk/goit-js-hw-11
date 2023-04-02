@@ -59,7 +59,7 @@ function onLoadMore() {
 }
 
 async function fetchGallery() {
-  refs.loadMoreBtn.style.display = 'inline-block'
+  refs.loadMoreBtn.style.display = 'flex'
 
   const r = await newsApiService.fetchGallery();
   const { hits, total } = r;
@@ -98,24 +98,24 @@ function onRenderGallery(elements) {
         comments,
         downloads,
       }) => {
-        return `<div class="photo-card">
+        return `<div class="gallery__photo-card">
     <a href="${largeImageURL}">
-      <img class="photo-img" src="${webformatURL}" alt="${tags}" loading="lazy" />
+      <img class="gallery__photo-card__photo-img" src="${webformatURL}" alt="${tags}" loading="lazy" />
     </a>
-    <div class="info">
-      <p class="info-item">
+    <div class="gallery__photo-card__info">
+      <p class="gallery__photo-card__info__info-item">
         <b>Likes</b>
         ${likes}
       </p>
-      <p class="info-item">
+      <p class="gallery__photo-card__info__info-item">
         <b>Views</b>
         ${views}
       </p>
-      <p class="info-item">
+      <p class="gallery__photo-card__info__info-item">
         <b>Comments</b>
         ${comments}
       </p>
-      <p class="info-item">
+      <p class="gallery__photo-card__info__info-item">
         <b>Downloads</b>
         ${downloads}
       </p>
