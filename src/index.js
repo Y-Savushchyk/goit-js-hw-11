@@ -77,7 +77,6 @@ async function fetchGallery() {
 
   if (isShown < total) {
     Notify.success(`Hooray! We found ${total} images !!!`);
-    refs.loadMoreBtn.classList.remove('is-hidden');
   }
 
   if (isShown >= total) {
